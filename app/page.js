@@ -1,45 +1,42 @@
+import Image from "next/image";
 import Link from "next/link";
 import Photo from "@/components/Photo";
 import CtaBand from "@/components/CtaBand";
-import { certifications, processSteps, products, site, yearsInBusiness } from "@/lib/site";
+import BrandStrip from "@/components/BrandStrip";
+import ProductCard from "@/components/ProductCard";
+import { certifications, divisions, facilities, processSteps, products, site, yearsInBusiness } from "@/lib/site";
 
 export default function Home() {
   const stats = [
     { value: `${yearsInBusiness()}+`, label: "Years in textiles" },
-    { value: "10+", label: "Export countries" },
-    { value: "150+", label: "Skilled workforce" },
-    { value: "50K+", label: "Pieces per month" },
+    { value: "15+", label: "Export countries" },
+    { value: "500+", label: "Skilled workforce" },
+    { value: "250K+", label: "Pieces per month" },
   ];
 
   return (
     <>
-      <section className="hero weave-bg">
-        <div className="container hero-grid">
-          <div className="hero-copy">
-            <span className="eyebrow">Working since {site.founded}</span>
-            <h1>
-              Quality textiles,
-              <br />
-              woven with <em>trust.</em>
-            </h1>
-            <p>
-              For over {yearsInBusiness()} years, {site.name} has turned fine cotton into bed
-              linen, towels, hoodies and jackets for importers, retailers and brands around the world.
-            </p>
-            <div className="hero-actions">
-              <Link href="/products" className="btn btn-gold">Explore Products</Link>
-              <Link href="/about" className="btn btn-outline-light">Our Story</Link>
-            </div>
+      <section className="hero">
+        <Image src="/images/factory/weaving-hall.jpg" alt="" fill priority sizes="100vw" className="hero-bg" />
+        <div className="hero-overlay" />
+        <div className="container hero-inner">
+          <span className="eyebrow">Textile manufacturer &amp; exporter · Since {site.founded}</span>
+          <h1>
+            From fibre to finished garment, <span className="accent">made with trust.</span>
+          </h1>
+          <p>
+            {site.name} spins, weaves, knits, dyes and stitches polo shirts, T-shirts, denim,
+            shirts, hoodies and home textiles for brands and importers around the world.
+          </p>
+          <div className="hero-actions">
+            <Link href="/products" className="btn btn-gold">Explore Products</Link>
+            <Link href="/contact" className="btn btn-outline-light">Request a Quote</Link>
           </div>
-          <div className="hero-art">
-            <Photo src="/images/products/bed-sheets.png" alt="Embroidered bed sheet set" tall priority />
-            <Photo src="/images/products/hoodies.png" alt="Fleece hoodies in five colours" priority />
-            <Photo src="/images/products/towels.png" alt="Stack of cotton terry towels" priority />
-            <div className="hero-badge">
-              <strong>{site.founded}</strong>
-              <span>Established</span>
-            </div>
-          </div>
+          <ul className="hero-points">
+            <li>Vertically integrated</li>
+            <li>Private label &amp; OEM</li>
+            <li>Certified &amp; audited</li>
+          </ul>
         </div>
       </section>
 
@@ -54,6 +51,44 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section section-dark">
+        <div className="container">
+          <div className="section-head light">
+            <span className="eyebrow">Under one roof</span>
+            <h2>Our Divisions</h2>
+          </div>
+          <div className="divisions">
+            {divisions.map((d) => (
+              <div key={d.title} className="division">
+                <div className="division-img">
+                  <Image src={d.image} alt={d.title} fill sizes="180px" />
+                </div>
+                <h3>{d.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-head row">
+            <div>
+              <span className="eyebrow dark">What we make</span>
+              <h2>Our Product Range</h2>
+            </div>
+            <Link href="/products" className="btn btn-navy">View All Products</Link>
+          </div>
+          <div className="card-grid">
+            {products.slice(0, 8).map((p) => (
+              <ProductCard key={p.slug} product={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <BrandStrip />
+
       <section className="section">
         <div className="container split">
           <div>
@@ -61,45 +96,47 @@ export default function Home() {
             <h2>A legacy of craft since {site.founded}</h2>
             <p>
               What began in {site.founded} as a small fabric trading house in {site.address.city} has
-              grown into a vertically integrated textile business. We spin, weave, process, stitch and
-              pack under one roof, which keeps quality consistent and lead times short.
+              grown into a vertically integrated textile business. We spin, weave, knit, process, stitch
+              and pack under one roof, which keeps quality consistent and lead times short.
             </p>
-            <p>
-              Our customers stay with us for decades because we keep our word: honest pricing, steady
-              quality and shipments that leave on time.
-            </p>
+            <ul className="tick-list">
+              <li>In-house spinning to packing</li>
+              <li>Dedicated denim &amp; knit lines</li>
+              <li>Lab testing on every lot</li>
+              <li>Low MOQs for new brands</li>
+            </ul>
             <Link href="/about" className="btn btn-navy">More About Us</Link>
           </div>
           <div className="split-art">
-            <Photo src="/images/products/bed-sheets-folded.png" alt="Folded cotton bed sheets" tall label={`Since ${site.founded}`} />
-            <Photo src="/images/products/jacket-bomber.png" alt="Bomber jacket" tall />
+            <Photo src="/images/factory/stitching-line.jpg" alt="Garment stitching line" tall label={`Since ${site.founded}`} />
+            <Photo src="/images/factory/yarn-cones.jpg" alt="Yarn cones on creel" tall />
           </div>
         </div>
       </section>
 
-      <section className="section section-alt">
+      <section className="section section-dark">
         <div className="container">
-          <div className="section-head">
-            <span className="eyebrow dark">What we make</span>
-            <h2>Our Product Range</h2>
-            <p>Home textiles and apparel, built to your specification.</p>
+          <div className="section-head row light">
+            <div>
+              <span className="eyebrow">Infrastructure</span>
+              <h2>Inside Our Factory</h2>
+            </div>
+            <Link href="/gallery" className="btn btn-outline-light">Open Gallery</Link>
           </div>
-          <div className="card-grid">
-            {products.map((p) => (
-              <Link key={p.slug} href={`/products#${p.slug}`} className="product-card">
-                <Photo src={p.image} alt={p.name} sizes="(max-width: 620px) 100vw, 33vw" />
-                <div className="product-body">
-                  <h3>{p.name}</h3>
-                  <p>{p.blurb}</p>
-                  <span className="link-arrow">View details →</span>
+          <div className="facility-grid">
+            {facilities.map((f) => (
+              <Link key={f.title} href="/gallery" className="facility">
+                <div className="facility-img">
+                  <Image src={f.src} alt={f.title} fill sizes="(max-width: 620px) 50vw, 25vw" />
                 </div>
+                <span className="facility-bar">{f.title}</span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-alt">
         <div className="container">
           <div className="section-head">
             <span className="eyebrow dark">How we work</span>

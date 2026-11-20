@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
         <div>
           <h4>Products</h4>
-          <ul>{products.map((p) => <li key={p.slug}><Link href={`/products#${p.slug}`}>{p.name}</Link></li>)}</ul>
+          <ul>{products.map((p) => <li key={p.slug}><Link href={`/products/${p.slug}`}>{p.name}</Link></li>)}</ul>
         </div>
         <div>
           <h4>Contact</h4>

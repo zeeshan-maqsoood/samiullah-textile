@@ -1,10 +1,10 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const serif = Playfair_Display({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
+const serif = Montserrat({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-serif", display: "swap" });
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
 export const metadata = {
@@ -12,7 +12,7 @@ export const metadata = {
     default: `${site.name} | Textile Manufacturer & Exporter Since ${site.founded}`,
     template: `%s | ${site.name}`,
   },
-  description: `${site.name} has manufactured and exported bed sheets, towels, pillows, hoodies and jackets from ${site.address.city}, ${site.address.country} since ${site.founded}.`,
+  description: `${site.name} has manufactured and exported polo shirts, T-shirts, denim, shirts, hoodies, jackets and home textiles from ${site.address.city}, ${site.address.country} since ${site.founded}.`,
 };
 
 export default function RootLayout({ children }) {

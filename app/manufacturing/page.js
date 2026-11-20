@@ -1,14 +1,15 @@
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
-import { processSteps, site } from "@/lib/site";
+import { facilities, processSteps, site } from "@/lib/site";
 
 export const metadata = { title: "Manufacturing" };
 
 // SAMPLE CONTENT: replace capacity figures with real numbers.
 const capacity = [
-  { value: "60+", label: "Stitching machines" },
-  { value: "12", label: "Power looms" },
-  { value: "4", label: "Cutting tables" },
+  { value: "400+", label: "Stitching machines" },
+  { value: "48", label: "Air-jet looms" },
+  { value: "24", label: "Knitting machines" },
   { value: "In-house", label: "Quality checking" },
 ];
 
@@ -26,6 +27,7 @@ export default function Manufacturing() {
         eyebrow="Infrastructure"
         title="Manufacturing"
         text={`Integrated facilities in ${site.address.city}, built up step by step since ${site.founded}.`}
+        image="/images/factory/processing.jpg"
       />
       <section className="stats">
         <div className="container stats-grid">
@@ -54,6 +56,26 @@ export default function Manufacturing() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="section section-dark">
+        <div className="container">
+          <div className="section-head light">
+            <span className="eyebrow">Our facilities</span>
+            <h2>Machinery &amp; Departments</h2>
+            <p>Modern machinery and a trained workforce at every stage of production.</p>
+          </div>
+          <div className="facility-grid">
+            {facilities.map((f) => (
+              <div key={f.title} className="facility">
+                <div className="facility-img">
+                  <Image src={f.src} alt={f.title} fill sizes="(max-width: 620px) 50vw, 25vw" />
+                </div>
+                <span className="facility-bar">{f.title}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

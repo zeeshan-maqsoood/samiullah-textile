@@ -19,6 +19,7 @@ export default function About() {
         eyebrow={`Established ${site.founded}`}
         title="Our Story"
         text={`${yearsInBusiness()}+ years of making textiles the world trusts.`}
+        image="/images/factory/stitching-floor.jpg"
       />
 
       <section className="section">
@@ -29,8 +30,8 @@ export default function About() {
             <p>
               {site.name} was founded in {site.founded} in {site.address.city}, {site.address.country},
               the heart of the country&apos;s textile industry. From a single trading office we have
-              grown step by step into an integrated manufacturer of home textiles and
-              apparel.
+              grown step by step into an integrated manufacturer of knitted and woven
+              apparel, denim and home textiles.
             </p>
             <p>
               Today we serve importers, wholesalers and private-label brands across Europe, the
@@ -39,8 +40,8 @@ export default function About() {
             </p>
           </div>
           <div className="split-art">
-            <Photo src="/images/products/pillows.png" alt="Decorative cushions" tall />
-            <Photo src="/images/products/hoodie-green.png" alt="Green pullover hoodie" tall />
+            <Photo src="/images/factory/denim-stitching.jpg" alt="Denim stitching line" tall />
+            <Photo src="/images/products/polo-model.jpg" alt="Polo shirt" tall />
           </div>
         </div>
       </section>
